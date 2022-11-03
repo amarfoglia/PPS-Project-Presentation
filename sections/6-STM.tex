@@ -1,0 +1,33 @@
+\section{STM - Software Transactional Memory}
+\begin{frame}{ZSTM}
+  \begin{block}{Definizione}
+    STM è uno strumento che permette di comporre singole operazioni in un'unica transazione eseguibile in maniera atomica. In \texttt{ZIO} viene rappresentato dalla struttura \texttt{ZSTM[R, E, A]}.
+  \end{block}
+
+  \begin{exampleblock}{Vantaggi}
+    \begin{itemize}
+      \item più potenti di \texttt{Ref}, poiché componibili
+      \item esegue transazioni condizionali evitando l'utilizzo di \textit{locks}
+      \item le transazioni sono libere da \textit{deadlocks} o \textit{race conditions}
+    \end{itemize}
+  \end{exampleblock}
+
+  \begin{alertblock}{Limitazioni}
+    \begin{itemize}
+      \item non è possibile eseguire istruzioni concorrenti all'interno di una ZSTM
+      \item nel caso di forte contesa vi è un calo di \textit{performance}
+    \end{itemize}
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{ZSTM II}
+  \begin{block}{Esempio: trasferimento bancario}
+    \lstinputlisting[language=Scala]{code/6a-zstm.scala}
+  \end{block}
+  \begin{block}{Operatori}
+    \begin{itemize}
+      \item \texttt{retry}: permette di rieseguire un'intera transazione
+      \item \texttt{commit}: converte una transazione in uno \texttt{ZIO} \textit{effect}
+    \end{itemize}
+  \end{block}
+\end{frame}
