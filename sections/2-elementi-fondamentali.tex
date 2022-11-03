@@ -1,0 +1,74 @@
+\section{Elementi fondamentali}
+
+\begin{frame}{Functional Effects}
+  \begin{block}{\textit{Purely functional programming}}
+    \texttt{ZIO} permette di sviluppare codice puramente funzionale, cioè i programmi possono essere descritto come composizione di espressioni che rispettano le seguenti proprietà: 
+    \begin{itemize}
+      \item \textbf{\textit{referential transparency}}: le espressioni sono sostituibili dai valori;
+      \item \textbf{\textit{local reasoning}}: le funzioni sono autoesplicative.
+    \end{itemize}
+    Queste facilitano il \textit{refactoring} e la comprensione del codice.
+  \end{block}
+
+  \begin{alertblock}{Perchè i \textit{side effect} sono un problema?}
+    Le proprietà appena presentate vengono meno nel caso di \textit{side effects}. Serve quindi un ponte tra questi e la programmazione puramente funzionale.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Functional Effects II}
+  \begin{block}{ZIO Core}
+    \vspace{4mm}
+    \begin{columns}
+      \begin{column}{.5\textwidth}
+        Il tipo di dato principale di \texttt{ZIO} è \texttt{ZIO[-R, +E, +A]} che consente di convertire istruzioni in \textit{functional effect} al fine di ritardarne la valutazione.
+      \end{column}
+      \begin{column}{.4\textwidth}
+        \begin{itemize}
+          \item \texttt{R} - \textit{environment type}.
+          \item \texttt{E} - \textit{error type}.
+          \item \texttt{A} - \textit{success type}.
+        \end{itemize}
+      \end{column}
+    \end{columns}
+    \vspace{2mm}
+  \end{block}
+
+  \begin{exampleblock}{Vantaggi}
+    \begin{itemize}
+      \item Separazione tra il "cosa" il programma dovrà fare dal "come" lo farà.
+      \item Sviluppo incrementale di programmi complessi tramite \textbf{componibilità}.
+      \item Fruizione dei vantaggi del \textit{type system} di Scala. 
+      %\lstinline[language=Scala]{ZIO[Clock, Nothing, Unit]}
+    \end{itemize}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{ZIO Constructors \& Operators}
+  \begin{block}{\texttt{ZIO} constructors}
+    I costruttori di \texttt{ZIO} permetto di ricondurre codice affetto da \textit{side-effects} a funzioni pure componibili. Tra i principali:
+    \begin{itemize}
+      \item \texttt{ZIO.succeed}: converte valori puri;
+      \item \texttt{ZIO.attempt}: converte codice procedurale affetto da \textit{side-effects};
+      \item \texttt{ZIO.async}: converte codice asincrono basato su \textit{callbacks};
+      \item \texttt{ZIO.fromFuture}: converte una funzione che crea una \texttt{Future}.
+    \end{itemize}
+  \end{block}
+  \begin{block}{\texttt{ZIO} operators}
+    Una peculiarità di \texttt{ZIO} sono gli operatori, come \texttt{flatMap}, \texttt{foreach}, \texttt{zip}, \texttt{collectAll}, che permettono di trasformare e combinare \textit{effect} tra loro.
+    \begin{itemize}
+      \item \small\texttt{flatMap} + \textit{for comprehension} 
+      $\rightarrow$ espressività programmazione imperativa.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{ZIO Constructors \& Operators II}
+  \begin{block}{Esempio: assegnazione di un \textit{task}}
+    \lstinputlisting[language=Scala]{code/1a-effects.scala}
+  \end{block}
+  \pause
+  \begin{block}{Esempio: assegnazione di un \textit{task} in \texttt{ZIO}}
+    \lstinputlisting[language=Scala]{code/1b-effects.scala}
+  \end{block}
+\end{frame}
+

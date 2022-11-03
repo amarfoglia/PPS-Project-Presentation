@@ -1,0 +1,70 @@
+\section{Introduzione}
+\begin{frame}{Cos'è ZIO?}
+  \begin{columns}
+    \begin{column}{.5\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=0.9\textwidth]{img/zio-logo.jpg}
+        \label{ZIO logo.}
+      \end{figure}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{center} 
+        \texttt{ZIO} è una libreria puramente funzionale, \texttt{type-safe}, e componibile a supporto della programmazione concorrente e asincrona in Scala.
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+%
+\begin{frame}
+    \frametitle{Perchè ZIO?}
+    \begin{columns}
+        \begin{column}{.5\textwidth}
+            \centering{\small
+              {\textbf{Concorrenza}}\break
+              applicazioni concorrenti esenti da \textit{deadlocks} e \textit{race conditions}.
+            }
+        \end{column}
+        \begin{column}{.5\textwidth}
+            \centering{\small
+              {\textbf{Efficienza}}\break
+              cancellazione automatica di computazioni non più necessarie.
+            }
+        \end{column}
+    \end{columns}
+    
+    \bigskip
+
+    \begin{columns}
+      \begin{column}{.5\textwidth}
+          \centering{\small
+            {\textbf{Resource-safety}}\break
+            gestione automatica del ciclo di vita delle risorse.
+          }
+      \end{column}
+      \begin{column}{.5\textwidth}
+        \centering{\small
+          {\textbf{Resilienza}}\break
+          gestione statica degli errori, \texttt{Error channel} e meccanismi di \textit{scheduling}.
+        }
+      \end{column}
+    \end{columns}
+
+    \bigskip
+
+    \begin{columns}
+      \begin{column}{.5\textwidth}
+          \centering{\small
+            {\textbf{Testkit}}\break
+            sviluppo rapido di test deterministici e \textit{type-safe}.
+          }
+      \end{column}
+      \begin{column}{.5\textwidth}
+        \centering{\small
+          {\textbf{Streaming}}\break
+          presenza di \textit{stream} efficienti, \textit{lazy}, \textit{resource-safe}, concorrenti e infiniti.
+        }
+      \end{column}
+    \end{columns}
+        
+\end{frame}

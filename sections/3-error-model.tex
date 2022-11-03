@@ -1,0 +1,37 @@
+\section{ZIO Error Model}
+
+\begin{frame}{Gestione degli errori in \texttt{ZIO}}
+
+  \begin{block}{Tipologie di fallimento}
+    \texttt{ZIO} definisce tre possibili tipologie di fallimento:
+    \begin{itemize}
+      \item \textbf{\textit{Failures}}: modellano scenari di fallimento prevedibili (\textit{error type}).
+      \item \textbf{\textit{Defects}}: modellano errori imprevedibili (convertibili in \textit{failures}).
+      \item \textbf{\textit{Fatals}}: errori catastrofici che causano la terminazione del programma.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Gestione dichiarativa degli errori}
+    In un approccio dichiarativo, gli errori vengono rappresentati come valori.
+    \begin{itemize}
+      \item \textit{referential transparency}: non è necessario interrompere il flusso; 
+      \item \textit{exhaustive checking}: gli errori sono tipi di dato chiuso;
+      \item \textit{type safety}: previene la scrittura di codice \textit{unsafe};
+      \item \textit{error model}: modello \texttt{Cause[+E]} più espressivo di \texttt{try/catch}.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{Gestione delle \textit{Failure}}
+    \begin{itemize}
+      \item Una \textit{failure} può essere modellata tramite il costruttore.
+      \item Le \textit{failure} possono essere recuperate tramite l'operatore \texttt{catchAll}.
+      \item Le \textit{failure} possono diventare \textit{defect} tramite l'operatore \texttt{orDie}.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Esempio: recupero di una \textit{Failure}}
+    \lstinputlisting[language=Scala]{code/1c-error-match.scala}
+  \end{block}
+\end{frame}

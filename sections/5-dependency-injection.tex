@@ -1,0 +1,48 @@
+\section{Dependency Injection}
+\begin{frame}{}
+  \begin{block}{Environment}
+    \centering{
+    \lstinline[language=Scala]{type ZIO[-R, +E, +A] = ZEnvironment[R] => Either[Cause[E], A]}
+    }
+    \vspace{2mm}
+    \begin{itemize}
+      \item \texttt{R} raccoglie un insieme di funzionalità valide localmente (\small{\textit{SRP}}).
+      \item \texttt{R} può definire le dipendenze di un \textit{workflow}.
+      \begin{itemize}
+        \item in linea con architetture costruite a "strati" (\textit{Onion architecture} ).
+      \end{itemize} 
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{ZLayer}
+    Il tipo \texttt{ZLayer[RIn, E, ROut]} semplifica la costruzione degli "strati"
+    \begin{itemize}
+      \item componibile verticalmente e orizzontalmente
+      \item controllo delle dipendenze mancanti a \textit{compile time}
+      \item migliora la leggibilità del codice
+      \item consente di aggiungere una logica di inizializzazione e di finalizzazione
+    \end{itemize}
+
+  \end{block}
+  
+\end{frame}
+
+\begin{frame}{The Service Pattern}
+  \begin{block}{Esempio: implementazione del Service Pattern}
+    \lstinputlisting[language=Scala]{code/5a-service-pattern.scala}
+  \end{block}
+\end{frame}
+
+\begin{frame}{The Service Pattern II}
+  \begin{block}{}
+    \lstinputlisting[language=Scala]{code/5b-service-pattern.scala}
+  \end{block}
+  \pause
+  \begin{alertblock}{}
+    \lstinputlisting[language=Scala]{code/5c-service-pattern.scala}
+  \end{alertblock}
+  \pause
+  \begin{exampleblock}{}
+    \lstinputlisting[language=Scala]{code/5d-service-pattern.scala}
+  \end{exampleblock}
+\end{frame}
