@@ -1,0 +1,24 @@
+\section{Streaming con ZIO}
+\begin{frame}{ZIO Stream}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{img/zio-stream.png}
+    \label{ZIO logo.}
+  \end{figure}
+  \begin{block}{ZStream}
+    \texttt{ZIO} implementa il paradigma \textit{streaming} attraverso il supporto \texttt{ZIO Stream}. Il tipo di dato principale è \texttt{ZStream[R, E, O]}:
+    \begin{itemize}
+      \item dichiarativo e di alto livello
+      \item asincrono e scalabile
+      \item efficiente (\textit{chunk}) e \textit{resource-safe}
+      \item flusso di dati potenzialmente infinito
+      \item concorrente e parallelizzabile
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{ZIO Stream II}
+    \begin{block}{Esempio: lettura di un file come uno \textit{stream} di linee}
+    \lstinputlisting[language=Scala]{code/7a-stream.scala}    
+  \end{block}
+\end{frame}
